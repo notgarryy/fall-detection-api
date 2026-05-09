@@ -2,7 +2,7 @@
 
 A production-ready REST API for real-time human fall detection using **FMCW radar point cloud data** and **TTSNet**, a spatiotemporal deep learning architecture.
 
-> 🏆 **Related Research**: This API is based on work published in **IEEE Access (Q1)**, 2026 and **Advance Sustainable Science, Engineering and Technology (Q3, SINTA 1)**, 2026 (under revision).
+> **Related Research**: This API is based on work published in **IEEE Access (Q1)**, 2026 and **Advance Sustainable Science, Engineering and Technology (Q3, SINTA 1)**, 2026 (under revision).
 > [View IEEE Access Paper](https://doi.org/10.1109/ACCESS.2026.3676850)
 
 ---
@@ -28,7 +28,7 @@ JSON Response (fall detected + confidence)
 | Class | Description |
 |---|---|
 | Non-Fall | Standing, sitting, or walking |
-| Fall | Fall event detected ⚠️ |
+| Fall | Fall event detected  |
 
 ---
 
@@ -152,15 +152,14 @@ Accepts a CSV file of FMCW radar point cloud data and returns a fall detection r
 - Content-Type: `multipart/form-data`
 - Body: CSV file upload
 
-**Required CSV columns:**
-| Column | Description |
-|---|---|
-| `timestamp` | Frame timestamp |
-| `x` | X coordinate (meters) |
-| `y` | Y coordinate (meters) |
-| `z` | Z coordinate (meters) |
-| `doppler` | Doppler velocity |
-| `SNR` | Signal-to-noise ratio |
+**Example CSV file content:**
+| frame_id | timestamp | numFrame | x | y | z | doppler | SNR | Range | Azimuth | Elevation |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 113549961238 | 11:35:49.961238 | 1 | -1.0297018537498477 | 0.6179574569805018 | 1.9709418974446933 | 0.0697200018621515 | 6.999999843537808 | 2.3079794820051087 | 149.03066538178442 | 58.64597104113105 |
+| 113549961238 | 11:35:49.961238 | 2 | -0.9135603257378658 | 0.561446416096188 | 1.9273837117589727 | 0.0697200018621515 | 6.239999860525131 | 2.205588927988016 | 148.4263798374775 | 60.910758023471246 |
+| 113549961238 | 11:35:49.961238 | 3 | -0.9673241690529808 | 0.5944880404907763 | 1.9231101781639552 | 0.0697200018621515 | 7.519999831914902 | 2.233267748318236 | 148.4263798374775 | 59.44250207135235 |
+| 113549961238 | 11:35:49.961238 | 4 | -1.017408289250702 | 0.6377316812475272 | 1.965643410021392 | 0.0697200018621515 | 7.879999823868275 | 2.303383454760272 | 147.9196988491362 | 58.58036522973075 |
+| 113549961238 | 11:35:49.961238 | 5 | -1.0718818441646851 | 0.6706533882024435 | 2.015929436141101 | 0.0697200018621515 | 6.11999986320734 | 2.379638238568518 | 147.96667151791897 | 57.90388412626694 |
 
 **Response:**
 ```json
